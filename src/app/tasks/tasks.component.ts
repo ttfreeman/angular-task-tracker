@@ -22,4 +22,18 @@ export class TasksComponent implements OnInit {
       .subscribe(tasks => this.tasks = tasks);
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.taskService.addTask({ name } as Task)
+      .subscribe(task => {
+        this.tasks.push(task);
+      });
+  }
+
+  delete(task: Task): void {
+    this.tasks = this.tasks.filter(t => t !== task);
+    this.taskService.deleteTask(task).subscribe();
+  }
+
 }
