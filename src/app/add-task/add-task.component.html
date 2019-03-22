@@ -1,50 +1,89 @@
-<div>
-  <h2>Add a New Task</h2>
-  <div></div>
-  <div>
-    <div>
-      <label
-        >Name:
-        <input #taskName required placeholder="name" />
-      </label>
-    </div>
-    <div>
-      <label
-        >Description:
-        <input #taskDescription placeholder="description" />
-      </label>
-    </div>
-    <div>
-      <label
-        >Estimate:
-        <input #taskEstimate placeholder="estimated hours" />
-      </label>
-    </div>
-    <div>
-      <span>State: </span>
-      <input #rad1 type="radio" value="Planned" name="taskState" />Planned
-      <input #rad2 type="radio" value="In Progress" name="taskState" />In
-      Progress
-      <input #rad3 type="radio" value="Completed" name="taskState" />Completed
+<div class="container">
+  <div class="col-md-12 col-sm-6 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title">Create a New Task</h3>
+      </div>
+
+      <div class="panel-body">
+        <div class="form-horizontal row-border">
+          <div class="form-group">
+            <label class="col-md-2 control-label">Name </label>
+            <div class="col-md-10">
+              <input
+                #taskName
+                class="form-control"
+                type="text"
+                name="name"
+                placeholder="name"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Description </label>
+            <div class="col-md-10">
+              <textarea
+                #taskDescription
+                class="form-control"
+                type="text"
+                name="description"
+                placeholder="description"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Estimated hours </label>
+            <div class="col-md-10">
+              <input
+                #taskEstimate
+                class="form-control"
+                type="number"
+                name="estimate"
+                placeholder="estimated hours"
+              />
+            </div>
+          </div>
+          <span class="col-md-2 control-label">State: </span>
+          <div class="form-check">
+            <input #rad1 type="radio" value="Planned" name="taskState" />Planned
+            <input #rad2 type="radio" value="In Progress" name="taskState" />In
+            Progress
+            <input
+              #rad3
+              type="radio"
+              value="Completed"
+              name="taskState"
+            />Completed
+          </div>
+          <div class="col-md-10">
+            <div class="float-right">
+              <button (click)="goBack()" class="btn btn-secondary">
+                Cancel
+              </button>
+              <button
+                (click)="
+                  add(
+                    taskName.value,
+                    taskDescription.value,
+                    taskEstimate.value,
+                    rad1.checked
+                      ? rad1.value
+                      : rad2.checked
+                      ? rad2.value
+                      : rad3.checked
+                      ? rad3.value
+                      : null
+                  )
+                "
+                class="btn btn-primary"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <button (click)="goBack()">Cancel</button>
-  <button
-    (click)="
-      add(
-        taskName.value,
-        taskDescription.value,
-        taskEstimate.value,
-        rad1.checked
-          ? rad1.value
-          : rad2.checked
-          ? rad2.value
-          : rad3.checked
-          ? rad3.value
-          : null
-      )
-    "
-  >
-    Add
-  </button>
 </div>
