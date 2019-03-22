@@ -1,17 +1,32 @@
 <h2>View Tasks</h2>
 <div>
-  <label>Task name:
-    <input #taskName />
-  </label>
-  <button (click)="add(taskName.value); taskName.value=''">
-    Add
+  <button routerLink="/create">
+    Add New Task
   </button>
 </div>
-<ul>
-  <li *ngFor="let task of tasks" (click)="onSelect(task)">
-    <a routerLink="/detail/{{task.id}}">
-      <span>{{task.id}}</span> {{task.name}}
-    </a>
-    <button class="delete" title="delete task" (click)="delete(task)">x</button>
-  </li>
-</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Estimate</th>
+      <th>State</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let task of tasks">
+    <tr>
+      <td>{{ task.name }}</td>
+      <td>{{ task.estimate }}</td>
+      <td>{{ task.state }}</td>
+      <td>
+        <div>
+          <button routerLink="/detail/{{ task.id }}">
+            Edit
+          </button>
+          <button (click)="delete(task)">X</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

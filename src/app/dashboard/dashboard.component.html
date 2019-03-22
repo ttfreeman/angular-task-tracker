@@ -1,8 +1,11 @@
 <h3>Top Tasks</h3>
 <div>
-  <a *ngFor="let task of tasks" routerLink="/detail/{{task.id}}">
+  <a *ngFor="let task of tasks" routerLink="/detail/{{ task.id }}">
     <div>
-      <h4>{{task.name}}</h4>
+      <h4>{{ task.name }}</h4>
+      <p><span>Description: </span> {{ task.description }}</p>
+      <p><span>Estimated hours: </span> {{ task.estimate }}</p>
+      <p><span>State: </span> {{ task.state }}</p>
     </div>
   </a>
 </div>

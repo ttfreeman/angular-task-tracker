@@ -1,19 +1,48 @@
-import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Task } from './task';
-import { Injectable } from '@angular/core';
+import { InMemoryDbService } from "angular-in-memory-web-api";
+import { Task } from "./task";
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root"
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const tasks = [
-      { id: 11, name: 'task 1' },
-      { id: 12, name: 'other task' },
-      { id: 13, name: 'task 3' },
-      { id: 14, name: 'walk the dog' },
-      { id: 15, name: 'awesome stufff' },
-      { id: 16, name: 'do something fun' },
+      {
+        id: 1,
+        name: "data modeling",
+        description: "update the data model",
+        estimate: 12,
+        state: "Planned"
+      },
+      {
+        id: 2,
+        name: "add a page",
+        description: "add a new page describing the services",
+        estimate: 24,
+        state: "In Progress"
+      },
+      {
+        id: 3,
+        name: "update charts",
+        description: "update the dashboard with new charts",
+        estimate: 15,
+        state: "Completed"
+      },
+      {
+        id: 4,
+        name: "backend",
+        description: "debug API fetch frequency",
+        estimate: 6,
+        state: "Planned"
+      },
+      {
+        id: 5,
+        name: "data science",
+        description: "predict annual forecast",
+        estimate: 8,
+        state: "Completed"
+      }
     ];
     return { tasks };
   }

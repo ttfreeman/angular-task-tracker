@@ -14,6 +14,7 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TaskSearchComponent } from './task-search/task-search.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { TaskSearchComponent } from './task-search/task-search.component';
     MessagesComponent,
     DashboardComponent,
     TaskSearchComponent,
+    AddTaskComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

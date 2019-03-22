@@ -1,12 +1,39 @@
 <div *ngIf="task">
-
-  <h2>{{task.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{task.id}}</div>
+  <h2>{{ task.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{ task.id }}</div>
   <div>
-    <label>name:
-      <input [(ngModel)]="task.name" placeholder="name" />
-    </label>
+    <div>
+      <label
+        >Name:
+        <input [(ngModel)]="task.name" placeholder="name" />
+      </label>
+    </div>
+    <div>
+      <label
+        >Description:
+        <input [(ngModel)]="task.description" placeholder="description" />
+      </label>
+    </div>
+    <div>
+      <label
+        >Estimate:
+        <input [(ngModel)]="task.estimate" placeholder="estimated hours" />
+      </label>
+    </div>
+    <div>
+      <span>State: </span>
+      <label *ngFor="let val of ['Planned', 'In Progress', 'Completed']">
+        <input
+          type="radio"
+          required
+          name="state"
+          checked
+          [value]="val"
+          [(ngModel)]="task.state"
+        />{{ val }}
+      </label>
+    </div>
   </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+  <button (click)="goBack()">Cancel</button>
+  <button (click)="save()">Save Changes</button>
 </div>
