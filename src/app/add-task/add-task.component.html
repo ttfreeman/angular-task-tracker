@@ -1,7 +1,7 @@
 <div class="container">
   <div class="col-md-12 col-sm-6 col-xs-12">
     <div class="panel panel-default">
-      <div class="panel-heading clearfix">
+      <div class="panel-heading clearfix some-margin">
         <h3 class="panel-title">Create a New Task</h3>
       </div>
 
@@ -46,14 +46,26 @@
           </div>
           <span class="col-md-2 control-label">State: </span>
           <div class="form-check">
-            <input #rad1 type="radio" value="Planned" name="taskState" />Planned
-            <input #rad2 type="radio" value="In Progress" name="taskState" />In
-            Progress
+            <input
+              #rad1
+              type="radio"
+              value="Planned"
+              name="taskState"
+              class="some-margin"
+            />Planned
+            <input
+              #rad2
+              type="radio"
+              value="In Progress"
+              name="taskState"
+              class="some-margin"
+            />In Progress
             <input
               #rad3
               type="radio"
               value="Completed"
               name="taskState"
+              class="some-margin"
             />Completed
           </div>
           <div class="col-md-10">
@@ -76,7 +88,7 @@
                       : null
                   )
                 "
-                class="btn btn-primary"
+                class="btn btn-primary some-margin"
               >
                 Add
               </button>

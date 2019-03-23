@@ -1,24 +1,27 @@
-<div class="py-5">
-  <div class="container">
-    <h3>Top Tasks</h3>
-    <app-task-search></app-task-search>
+<div class="container">
+  <div class="row">
+    <h4 class="some-margin">Task Search</h4>
+    <button routerLink="/tasks" class="btn btn-info ml-auto mr-3 some-margin">
+      Go to Tasks List
+    </button>
+  </div>
+  <app-task-search></app-task-search>
+  <div class="col-md-8 some-margin">
     <div class="row hidden-md-up">
       <div
-        class="col-md-4"
+        class="col-md-6"
         *ngFor="let task of tasks"
         routerLink="/detail/{{ task.id }}"
       >
-        <div class="card">
-          <div class="card-block">
-            <h4 class="card-title">{{ task.name }}</h4>
-            <h6 class="card-subtitle text-muted">
-              Estimated hours: {{ task.estimate }}
-            </h6>
-            <p class="card-text p-y-1">
+        <div class="card text-white bg-success mb-3">
+          <div class="card-header">Estimated hours: {{ task.estimate }}</div>
+          <div class="card-body">
+            <h5 class="card-title">{{ task.name }}</h5>
+            <p class="card-text">
               {{ task.description }}
             </p>
-            <a href="#" class="card-link">link</a>
-            <a href="#" class="card-link">Second link</a>
+            <a href="#" class="card-link">Edit</a>
+            <a href="#" class="card-link">Delete</a>
           </div>
         </div>
       </div>

@@ -1,11 +1,24 @@
 <div class="container">
-  <h2>View Tasks</h2>
-  <div>
-    <button routerLink="/create">
+  <div class="row some-margin">
+    <h2>View Tasks</h2>
+    <button routerLink="/create" class="btn btn-info ml-auto mr-3">
       Add New Task
     </button>
   </div>
-
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-secondary" (click)="showAll()">
+      All
+    </button>
+    <button type="button" class="btn btn-danger" (click)="showPlanned()">
+      Planned
+    </button>
+    <button type="button" class="btn btn-warning" (click)="showInProgress()">
+      In Progress
+    </button>
+    <button type="button" class="btn btn-success" (click)="showCompleted()">
+      Completed
+    </button>
+  </div>
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
@@ -21,7 +34,7 @@
         <td>{{ task.estimate }}</td>
         <td>{{ task.state }}</td>
         <td>
-          <div>
+          <div class="btn-group">
             <button routerLink="/detail/{{ task.id }}" class="btn btn-info">
               Edit
             </button>
