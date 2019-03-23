@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TaskService } from "../task.service";
 import { Task } from "../task";
+import { EChartOption } from "echarts";
 
 @Component({
   selector: "app-dashboard",
@@ -9,6 +10,7 @@ import { Task } from "../task";
 })
 export class DashboardComponent implements OnInit {
   tasks: Task[];
+  chartOption: EChartOption;
 
   constructor(private taskService: TaskService) {}
 
@@ -17,12 +19,38 @@ export class DashboardComponent implements OnInit {
   }
 
   getTasks(): void {
-    this.taskService.getTasks().subscribe(tasks => (this.tasks = tasks));
+    this.taskService.getTasks().subscribe(tasks => {
+      this.tasks = tasks;
+
+      let xData = [];
+      let yData = [];
+      tasks.map(task => {
+        xData.push(task.name);
+        yData.push(task.estimate);
+      });
+
+      this.chartOption = {
+        xAxis: {
+          type: "category",
+          data: xData
+        },
+        yAxis: {
+          type: "value"
+        },
+        series: [
+          {
+            data: yData,
+            type: "bar"
+          }
+        ]
+      };
+    });
   }
 
   delete(task: Task): void {
     this.tasks = this.tasks.filter(t => t !== task);
     this.taskService.deleteTask(task).subscribe();
+    this.getTasks();
   }
 
   showAll(): void {

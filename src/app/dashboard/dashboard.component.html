@@ -6,45 +6,62 @@
     </button>
   </div>
   <app-task-search></app-task-search>
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-secondary" (click)="showAll()">
-      All
-    </button>
-    <button type="button" class="btn btn-danger" (click)="showPlanned()">
-      Planned
-    </button>
-    <button type="button" class="btn btn-warning" (click)="showInProgress()">
-      In Progress
-    </button>
-    <button type="button" class="btn btn-success" (click)="showCompleted()">
-      Completed
-    </button>
-  </div>
-  <div class="col-md-8 some-margin">
-    <div class="row hidden-md-up">
-      <div class="col-md-6" *ngFor="let task of tasks">
-        <div
-          class="card  mb-3"
-          [style.background-color]="
-            task.state === 'Planned'
-              ? 'lightsalmon'
-              : task.state === 'In Progress'
-              ? 'lightyellow'
-              : task.state === 'Completed'
-              ? 'lightgreen'
-              : null
-          "
+  <div class="row">
+    <div>
+      <div echarts [options]="chartOption" class="demo-chart"></div>
+    </div>
+    <div class="col">
+      <div class="btn-group" role="group" class="text-center">
+        <button type="button" class="btn btn-secondary" (click)="showAll()">
+          All
+        </button>
+        <button type="button" class="btn btn-danger" (click)="showPlanned()">
+          Planned
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning"
+          (click)="showInProgress()"
         >
-          <div class="card-header">Estimated hours: {{ task.estimate }}</div>
-          <div class="card-body">
-            <h5 class="card-title">{{ task.name }}</h5>
-            <p class="card-text">
-              {{ task.description }}
-            </p>
-            <a routerLink="/detail/{{ task.id }}" class="card-link text-primary"
-              >Edit</a
+          In Progress
+        </button>
+        <button type="button" class="btn btn-success" (click)="showCompleted()">
+          Completed
+        </button>
+      </div>
+      <div class="col-md-12 some-margin">
+        <div class="row hidden-md-up">
+          <div class="col-md-6" *ngFor="let task of tasks">
+            <div
+              class="card  mb-3"
+              [style.background-color]="
+                task.state === 'Planned'
+                  ? 'lightsalmon'
+                  : task.state === 'In Progress'
+                  ? 'lightyellow'
+                  : task.state === 'Completed'
+                  ? 'lightgreen'
+                  : null
+              "
             >
-            <a class="card-link text-danger" (click)="delete(task)">Delete</a>
+              <div class="card-header">
+                Estimated hours: {{ task.estimate }}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ task.name }}</h5>
+                <p class="card-text">
+                  {{ task.description }}
+                </p>
+                <a
+                  routerLink="/detail/{{ task.id }}"
+                  class="card-link text-primary"
+                  >Edit</a
+                >
+                <a class="card-link text-danger" (click)="delete(task)"
+                  >Delete</a
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>

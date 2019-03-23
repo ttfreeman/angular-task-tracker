@@ -6,3 +6,7 @@ a,
 a label {
   cursor: pointer;
 }
+
+.demo-chart {
+  width: 400px;
+}
