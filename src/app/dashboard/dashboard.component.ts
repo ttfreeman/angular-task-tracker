@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Task } from "../task";
 import { TaskService } from "../task.service";
+import { Task } from "../task";
 
 @Component({
   selector: "app-dashboard",
@@ -8,14 +8,46 @@ import { TaskService } from "../task.service";
   styleUrls: ["./dashboard.component.css"]
 })
 export class DashboardComponent implements OnInit {
-  tasks: Task[] = [];
+  tasks: Task[];
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {
     this.getTasks();
   }
+
   getTasks(): void {
     this.taskService.getTasks().subscribe(tasks => (this.tasks = tasks));
+  }
+
+  delete(task: Task): void {
+    this.tasks = this.tasks.filter(t => t !== task);
+    this.taskService.deleteTask(task).subscribe();
+  }
+
+  showAll(): void {
+    this.getTasks();
+  }
+  showCompleted(): void {
+    this.taskService
+      .getTasks()
+      .subscribe(
+        tasks => (this.tasks = tasks.filter(task => task.state === "Completed"))
+      );
+  }
+  showInProgress(): void {
+    this.taskService
+      .getTasks()
+      .subscribe(
+        tasks =>
+          (this.tasks = tasks.filter(task => task.state === "In Progress"))
+      );
+  }
+  showPlanned(): void {
+    this.taskService
+      .getTasks()
+      .subscribe(
+        tasks => (this.tasks = tasks.filter(task => task.state === "Planned"))
+      );
   }
 }

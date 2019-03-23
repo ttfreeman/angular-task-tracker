@@ -1,9 +1,14 @@
 <div class="container">
   <div class="row some-margin">
     <h2>View Tasks</h2>
-    <button routerLink="/create" class="btn btn-info ml-auto mr-3">
-      Add New Task
-    </button>
+    <div class="ml-auto mr-3">
+      <button routerLink="/create" class="btn btn-info">
+        Add New Task
+      </button>
+      <button routerLink="/dashboard" class="btn btn-primary some-margin">
+        Go to Dashboard
+      </button>
+    </div>
   </div>
   <div class="btn-group" role="group">
     <button type="button" class="btn btn-secondary" (click)="showAll()">
